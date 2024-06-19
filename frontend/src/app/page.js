@@ -27,7 +27,7 @@ export default function Home() {
         fetchData();
         setTimer(3);
       }
-    }, 1000);
+    }, 1200);
 
     return () => clearInterval(intervalId);
   }, [timer]);
@@ -47,7 +47,12 @@ export default function Home() {
       </div>
 
       <div>
-        <h1 style={{paddingBottom: "1em"}}>Sample Microservice Frontend</h1>
+        <div style={{paddingBottom: "1em"}}>
+          <h1>Sample Microservice Frontend</h1>
+          <p style={{padding: 0, margin: 0}}>
+            <a href="https://fs10xer.dev/about" target="_blank">by Lance</a>
+          </p>
+        </div>
         <p>
           This is a simple NextJS app which <br />
           queries an API at <a href={url} target="_blank">{url}</a> <br />
@@ -57,12 +62,13 @@ export default function Home() {
         <p>It's intended to be used as a sample app for <br />testing different services and deployments.</p>
       </div>
 
-      <div>
+      <div style={{paddingTop: "1em"}}>
         <h1>Loading data in {timer}...</h1>
         <br />
         {state && ! state.error &&  (
           <div style={{paddingBottom: "1em"}}>
             <p><strong>Date</strong>: {state.date}</p>
+            <p><strong>Host</strong>: {state.host}</p>
             <p><strong>UUID</strong>: {state.uuid}</p>
             <p><strong>Token</strong>: {state.token}</p>
           </div>
