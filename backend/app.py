@@ -1,4 +1,4 @@
-from os import getenv
+from socket import gethostname
 from uuid import uuid4
 from secrets import token_urlsafe
 from datetime import datetime
@@ -10,7 +10,10 @@ from quart_cors import cors
 def create_app():
     app = Quart(__name__)
     app = cors(app, allow_origin="*")
-    app.config["SERVER_NAME"] = getenv("SERVER_NAME", "127.0.0.1:5000")
+
+    @app.before_request
+    def set_server_name():
+        app.config['SERVER_NAME'] = None
 
     @app.route("/api/generate")
     async def main():
@@ -21,6 +24,7 @@ def create_app():
         return jsonify({
             "date": datetime.utcnow(),
             "uuid": uuid4(),
+            "host": gethostname(),
             "token": token_urlsafe(24)
         })
     
