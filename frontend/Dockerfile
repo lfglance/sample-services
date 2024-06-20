@@ -1,5 +1,8 @@
 FROM ubuntu:22.04
 
+ARG BACKEND_URL
+ENV BACKEND_URL=${BACKEND_URL}
+
 RUN apt update
 RUN apt install curl -y
 RUN curl -sL https://deb.nodesource.com/setup_22.x -o /tmp/install.sh
@@ -13,4 +16,4 @@ COPY . .
 RUN npm run build
 
 EXPOSE 3000
-CMD [ "bash", "entrypoint.sh" ]
+CMD [ "npm", "run", "start" ]

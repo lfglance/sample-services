@@ -60,23 +60,22 @@ export default function Home() {
         </p>
         <br />
         <p>It's intended to be used as a sample app for <br />testing different services and deployments.</p>
+        <div style={{padding: "2em 0"}}>
+          <h1>Loading data in {timer}...</h1>
+          <br />
+          {state && ! state.error &&  (
+            <div style={{paddingBottom: "1em"}}>
+              <p><strong>Date</strong>: {state.date}</p>
+              <p><strong>Host</strong>: {state.host}</p>
+              <p><strong>UUID</strong>: {state.uuid}</p>
+              <p><strong>Token</strong>: {state.token}</p>
+            </div>
+          )}
+          {state.error && (
+            <p><strong>There was an error. Double-check the URL in environment variable config.</strong></p>
+          )}
+        </div>
       </div>
-
-      <div style={{paddingTop: "1em"}}>
-        <h1>Loading data in {timer}...</h1>
-        <br />
-        {state && ! state.error &&  (
-          <div style={{paddingBottom: "1em"}}>
-            <p><strong>Date</strong>: {state.date}</p>
-            <p><strong>Host</strong>: {state.host}</p>
-            <p><strong>UUID</strong>: {state.uuid}</p>
-            <p><strong>Token</strong>: {state.token}</p>
-          </div>
-        )}
-        {state.error && (
-          <p><strong>There was an error. Double-check the URL in environment variable config.</strong></p>
-        )}
-    </div>
 
       <div className={styles.grid}>
         <a
@@ -88,11 +87,11 @@ export default function Home() {
           <h2>
             fs10xer <span>-&gt;</span>
           </h2>
-          <p>10xer engineer course</p>
+          <p>my site and blog</p>
         </a>
 
         <a
-          href="https://github.com/lfglance"
+          href="https://github.com/lfglance/sample-services-copilot"
           className={styles.card}
           target="_blank"
           rel="noopener noreferrer"
@@ -100,7 +99,7 @@ export default function Home() {
           <h2>
             Github <span>-&gt;</span>
           </h2>
-          <p>my code</p>
+          <p>source code</p>
         </a>
 
       </div>
